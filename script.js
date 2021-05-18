@@ -1,29 +1,93 @@
-// Setting up placeholder variables
-randPassword = [];
-randChar = [];
-combinedArray = [];
-randArr = [];
-
-// Setting up the arrays
-let arrUpLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-let arrLowLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-let arrNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let arrSpcChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "{", "}", ":", ";", "?", "+", "-", "/", "=", "<", ">", ",", ".", "~"];
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 // Generating the password
 function generatePassword() {
-    // Resetting password every time button is clicked
-    if (randPassword = true) {
-      delete randPassword;
-      delete randArr;
-      delete randChar;
 
-      randChar = [];
-      randArr = [];
-      randPassword = [];
+    // Setting up placeholder variables
+    randPassword = [];
+    randChar = [];
+    randArr = [];
+    combinedArray = [];
+
+    // Setting up the arrays
+    let arrUpLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    let arrLowLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    let arrNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let arrSpcChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "{", "}", ":", ";", "?", "+", "-", "/", "=", "<", ">", ",", ".", "~"];
+
+    // Setting up the password length
+    let passwordLength = parseInt(prompt("How many characters do you want in your password? Please choose between 8 and 128 characters."));
+
+    while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+      alert("Length must be more than 8 and less than 128 characters.")
+      passwordLength = parseInt(prompt("How many characters do you want in your password?"));
+    }
+
+    console.log("Our password length is a " + typeof passwordLength + " of " + passwordLength);
+
+    console.log("------------");
+
+    // Setting up the available character types
+    let QupChar = confirm("Do you want upper case characters?");
+    let QlowChar = confirm("Do you want lower case characters?");
+    let QnumChar = confirm("Do you want numerical characters?");
+    let QspecChar = confirm("Do you want special characters?");
+
+    // Making sure at least one character type was selected
+    while (!QupChar && !QlowChar && !QnumChar && !QspecChar) {
+    alert("You must select at least one character type.");
+    QupChar = confirm("Do you want upper case characters?");
+    QlowChar = confirm("Do you want lower case characters?");
+    QnumChar = confirm("Do you want numerical characters?");
+    QspecChar = confirm("Do you want special characters?");
+    } 
+
+    //Defining the combinations
+    console.log("Our password will consist of:")
+    if (QupChar === true) {
+    console.log("Upper case characters");
+    }
+      
+    if (QlowChar === true) {
+    console.log("Lower case characters");
+    }
+      
+    if (QnumChar === true) {
+    console.log("Numerical characters");
+    }
+      
+    if (QspecChar === true) {
+    console.log("Special characters");
+    }
+    console.log("------------");
+
+    //Setting up the combined array.
+    if (QupChar === true) {
+      for (let i = 0; i < arrUpLetters.length; i++) {
+        //const randUpLetter = arrUpLetters[Math.floor(Math.random() * arrUpLetters.length)];
+        //combinedArray.push(randUpLetter);
+        combinedArray.push(arrUpLetters[i]);
+      }
+    }
+    if (QlowChar === true) {
+      for (let b = 0; b < arrLowLetters.length; b++) {
+        //const randLowLetter = arrLowLetters[Math.floor(Math.random() * arrLowLetters.length)];
+        //combinedArray.push(randLowLetter);
+        combinedArray.push(arrLowLetters[b]);
+      }
+    }
+    if (QnumChar === true) {
+      for (let c = 0; c < arrNumbers.length; c++) {
+        //const randNum = arrNumbers[Math.floor(Math.random() * arrNumbers.length)];
+        //combinedArray.push(randNum);
+        combinedArray.push(arrNumbers[c]);
+      }
+    }
+    if (QspecChar === true) {
+      for (let d = 0; d < arrSpcChars.length; d++) {
+        combinedArray.push(arrSpcChars[d]);
+      }
     }
 
     // Setting up the array of random characters
@@ -55,91 +119,3 @@ function generatePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-// Setting up the password length
-  let passwordLength = parseInt(prompt("How many characters do you want in your password? Please choose between 8 and 128 characters."));
-
-  while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-    alert("Length must be more than 8 and less than 128 characters.")
-    passwordLength = parseInt(prompt("How many characters do you want in your password?"));
-  }
-
-  console.log("Our password length is a " + typeof passwordLength + " of " + passwordLength);
- 
-  console.log("------------");
-
-  // Setting up the available character types
-  let QupChar = confirm("Do you want upper case characters?");
-  let QlowChar = confirm("Do you want lower case characters?");
-  let QnumChar = confirm("Do you want numerical characters?");
-  let QspecChar = confirm("Do you want special characters?");
-
-  // Making sure at least one character type was selected
-  while (!QupChar && !QlowChar && !QnumChar && !QspecChar) {
-  alert("You must select at least one character type.");
-  QupChar = confirm("Do you want upper case characters?");
-  QlowChar = confirm("Do you want lower case characters?");
-  QnumChar = confirm("Do you want numerical characters?");
-  QspecChar = confirm("Do you want special characters?");
-  } 
-
-/*
-console.log(QupChar);
-console.log(QlowChar);
-console.log(QnumChar);
-console.log(QspecChar);
-*/
-
-//Defining the combinations
-console.log("Our password will consist of:")
-if (QupChar === true) {
-  console.log("Upper case characters");
-}
-    
-if (QlowChar === true) {
-  console.log("Lower case characters");
-}
-    
-if (QnumChar === true) {
-  console.log("Numerical characters");
-}
-    
-if (QspecChar === true) {
-  console.log("Special characters");
-}
-console.log("------------");
-
-//Setting up the combined array.
-  if (QupChar === true) {
-    for (let i = 0; i < arrUpLetters.length; i++) {
-      //const randUpLetter = arrUpLetters[Math.floor(Math.random() * arrUpLetters.length)];
-      //combinedArray.push(randUpLetter);
-      combinedArray.push(arrUpLetters[i]);
-    }
-  }
-  if (QlowChar === true) {
-    for (let b = 0; b < arrLowLetters.length; b++) {
-      //const randLowLetter = arrLowLetters[Math.floor(Math.random() * arrLowLetters.length)];
-      //combinedArray.push(randLowLetter);
-      combinedArray.push(arrLowLetters[b]);
-    }
-  }
-  if (QnumChar === true) {
-    for (let c = 0; c < arrNumbers.length; c++) {
-      //const randNum = arrNumbers[Math.floor(Math.random() * arrNumbers.length)];
-      //combinedArray.push(randNum);
-      combinedArray.push(arrNumbers[c]);
-    }
-  }
-  if (QspecChar === true) {
-    for (let d = 0; d < arrSpcChars.length; d++) {
-      //const randSpcChar = arrSpcChars[Math.floor(Math.random() * arrSpcChars.length)];
-      //combinedArray.push(randSpcChar);
-      combinedArray.push(arrSpcChars[d]);
-    }
-  }
-
-console.log("Here is our combined array of possible password characters.")
-console.log(combinedArray);
-console.log("------------")

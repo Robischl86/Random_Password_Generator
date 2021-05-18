@@ -11,6 +11,7 @@ This project was created by Robischl86
  8. [Questions](#questions) 
 ## Description
 This web application will create a randomly-generated password.
+[Link](https://robischl86.github.io/Random_Password_Generator/)
 ## Screenshot
 ![Screenshot](screenshot.jpg?raw=true) 
 ## Installation
