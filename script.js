@@ -65,22 +65,16 @@ function generatePassword() {
     //Setting up the combined array.
     if (QupChar === true) {
       for (let i = 0; i < arrUpLetters.length; i++) {
-        //const randUpLetter = arrUpLetters[Math.floor(Math.random() * arrUpLetters.length)];
-        //combinedArray.push(randUpLetter);
         combinedArray.push(arrUpLetters[i]);
       }
     }
     if (QlowChar === true) {
       for (let b = 0; b < arrLowLetters.length; b++) {
-        //const randLowLetter = arrLowLetters[Math.floor(Math.random() * arrLowLetters.length)];
-        //combinedArray.push(randLowLetter);
         combinedArray.push(arrLowLetters[b]);
       }
     }
     if (QnumChar === true) {
       for (let c = 0; c < arrNumbers.length; c++) {
-        //const randNum = arrNumbers[Math.floor(Math.random() * arrNumbers.length)];
-        //combinedArray.push(randNum);
         combinedArray.push(arrNumbers[c]);
       }
     }
